@@ -1,0 +1,9 @@
+
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# if request dosn't start with web add it
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule (.*) /web/$1
+
