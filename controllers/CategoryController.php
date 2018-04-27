@@ -10,22 +10,26 @@ namespace app\controllers;
 
 
 use app\models\Category;
+use yii\filters\AjaxFilter;
 use yii\web\Controller;
 
 class CategoryController  extends Controller
 {
+    public function behaviors()
+    {
+        return[
+          'class'=>AjaxFilter::className()
+        ];
+
+    }
+
+
     public function actionParse()
     {
         $categories=Category::parse();
         return 'Получено '.Category::count().' записей';
     }
 
-    public function actionMenu()
-    {
-        $menu=Category::getMenu();
-        return $this->renderPartial('menu',compact('menu'));
-
-    }
 
     public function actionCount()
     {

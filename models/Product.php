@@ -96,7 +96,7 @@ class Product extends \yii\db\ActiveRecord
 //
 //    }
 
-    public static function parseAsync($url, $categoryId,$categoryName)
+    private static function parseAsync($url, $categoryId,$categoryName)
     {
 
         $countPage=self::getCountPage($url);
@@ -160,17 +160,7 @@ class Product extends \yii\db\ActiveRecord
         }
     }
 
-    public static function parseOne()
-    {
-        $category=self::getCategory();
-        $category->status=0;
-        $category->save();
-        $url='https://oz.by'.$category['url'];
-        self::parseAsync($url,$category['id'],$category['name']);
-        $category->status=1;
-        $category->save();
 
-    }
 
     static function getCategory()
     {
