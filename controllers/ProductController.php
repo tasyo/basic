@@ -18,16 +18,10 @@ class ProductController extends Controller
     static $i=0;
     public function actionParse()
     {
-       $products=Product::parseOne();
-//       return $this->render('parse',compact('products'));
-        return 'Parsing.....';
+       $products=Product::parseAll();
+        return 'Получено '.Product::count().' записей';
     }
 
-    public function actionParseInfo()
-    {
-       return Product::getCurrentUrl()?:'no';
-       // return 'Info';
-    }
 
 
 

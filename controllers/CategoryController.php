@@ -17,8 +17,7 @@ class CategoryController  extends Controller
     public function actionParse()
     {
         $categories=Category::parse();
-//        return $this->render('parse', compact('categories'));
-        $this->redirect('/');
+        return 'Получено '.Category::count().' записей';
     }
 
     public function actionMenu()
@@ -26,6 +25,11 @@ class CategoryController  extends Controller
         $menu=Category::getMenu();
         return $this->renderPartial('menu',compact('menu'));
 
+    }
+
+    public function actionCount()
+    {
+        return Category::count();
     }
 
 }

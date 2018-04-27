@@ -113,3 +113,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+#loader{
+    color: red;
+    font-size: 20px;
+}
+#parseInfo{
+    color: #0D3349;
+    font-size: 20px;
+}

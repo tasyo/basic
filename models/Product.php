@@ -197,9 +197,9 @@ class Product extends \yii\db\ActiveRecord
         return $categories;
     }
 
-    public static function getCurrentUrl()
+    public static function count()
     {
-        return self::$currentUrl;
+        return self::find()->count();
     }
 
 

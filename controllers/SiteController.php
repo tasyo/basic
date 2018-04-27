@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Category;
+use app\models\Product;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\FileHelper;
@@ -130,18 +132,15 @@ class SiteController extends Controller
 
     public function actionTruncateTables()
     {
-       if(Yii::$app->db->createCommand()->truncateTable('Product')->execute() &&
-        Yii::$app->db->createCommand()->truncateTable('Category')->execute())
-       {
-           Yii::$app->session->addFlash('info','База данных очищена');
-       }
+        Yii::$app->db->createCommand()->truncateTable('Product')->execute();
+        Yii::$app->db->createCommand()->truncateTable('Category')->execute();
+
 
         $directories=FileHelper::findDirectories('image');
         foreach ($directories as $directory)
         {
             FileHelper::removeDirectory($directory);
         }
-        Yii::$app->session->addFlash('info','Папки удалены');
-        return $this->redirect('/');
+        return 'База данных и папки очищены';
     }
 }

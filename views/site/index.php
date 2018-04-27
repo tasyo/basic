@@ -12,31 +12,28 @@ $this->title = 'My Yii Application';
         <div class="col-md-2 col-lg-2">
             <?=Html::a('Получить категории',
                 ['category/parse'],
-                ['class'=>'btn btn-primary'])?>
+                [   'class'=>'btn btn-primary',
+                    'id'=>'get-category'])?>
         </div>
-        <div class="col-md-2 col-lg-2">
+        <div class="col-md-2 col-lg-2 ">
             <?=Html::a('Скачать продукты',
                 ['product/parse'],
-                [
-                    'class'=>'btn btn-primary',
-                    'id'=>'download'
-                    ])?>
+                [   'class'=>'btn btn-primary',
+                    'id'=>'get-product' ])?>
         </div>
         <div class="col-md-2 col-lg-2">
             <?=Html::a('очистить базу данных',
                 ['truncate-tables'],
-                ['class'=>'btn btn-danger'])?>
+                ['class'=>'btn btn-danger',
+                  'id'=>'clear-database'])?>
         </div>
     </div>
-    <?php foreach (Yii::$app->session->getAllFlashes() as $type=>$messages):?>
-        <?php foreach ($messages as $message):?>
-            <div class="alert >"><?=$message?></div>
-        <?php endforeach?>
-    <?php endforeach?>
     <h3>Info</h3>
     <p id="parseInfo"></p>
     <p id="parseI"></p>
-    <a id="stop" class="col-sm-2 btn btn-primary">Stop</a>
+    <div id="loader">
+        <p>Подождите выполняется запрос.</p>
+    </div>
 
 
 </div>

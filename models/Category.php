@@ -126,6 +126,11 @@ class Category extends \yii\db\ActiveRecord
         return $menu;
     }
 
+    public static function count()
+    {
+        return self::find()->count();
+    }
+
 
 
 
